@@ -7,8 +7,17 @@
 //
 
 #import "ViewController.h"
+#import "MyScrollView.h"
 
-@interface ViewController ()
+@interface ViewController () <UIScrollViewDelegate>
+
+//@property (nonatomic) UIScrollView *scrollView;
+@property (nonatomic) MyScrollView *scrollView;
+@property (nonatomic) UIView *redImageView;
+@property (nonatomic) UIView *greenImageView;
+@property (nonatomic) UIView *blueImageView;
+@property (nonatomic) UIView *yellowImageView;
+
 
 @end
 
@@ -16,8 +25,30 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view, typically from a nib.
+    
+    MyScrollView *firstView = [[MyScrollView alloc]initWithFrame:self.view.bounds];
+    [self.view addSubview:firstView];
+
+    firstView.contentSize = self.view.frame.size;
+    
+    self.redImageView = [[UIView alloc] initWithFrame:CGRectMake(20.0, 20.0, 100, 100)];
+    self.redImageView.backgroundColor = [UIColor redColor];
+    [firstView addSubview:self.redImageView];
+
+    self.greenImageView = [[UIView alloc]initWithFrame:CGRectMake(150, 150, 150, 200)];
+    self.greenImageView.backgroundColor = [UIColor greenColor];
+    [firstView addSubview:self.greenImageView];
+
+    self.blueImageView = [[UIView alloc]initWithFrame:CGRectMake(40, 400, 200, 150)];
+    self.blueImageView.backgroundColor = [UIColor blueColor];
+    [firstView addSubview:self.blueImageView];
+
+    self.yellowImageView = [[UIView alloc] initWithFrame:CGRectMake(100, 600, 180, 150)];
+    self.yellowImageView.backgroundColor = [UIColor yellowColor];
+    [firstView addSubview:self.yellowImageView];
+    
 }
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
